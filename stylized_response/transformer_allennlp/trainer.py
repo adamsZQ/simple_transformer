@@ -25,12 +25,11 @@ class TransformerTrainer:
 
     def __init__(self, training=False):
         self.training = training
-        config = conf['transformer']
+        config = conf['transformer_allen']
         prefix = config['data_prefix']
         train_file = config['train_data']
         valid_file = config['valid_data']
         self.model_path = config['model']
-
 
         if torch.cuda.is_available():
             cuda_device = 0
@@ -47,7 +46,7 @@ class TransformerTrainer:
         self.valid_dataset = self.reader.read(os.path.join(prefix, valid_file))
 
         self.vocab = Vocabulary.from_instances(self.train_dataset + self.valid_dataset,
-                                          min_count={'tokens': 3, 'target_tokens': 3})
+                                               min_count={'tokens': 3, 'target_tokens': 3})
 
         self.model = SimpleTransformer(self.vocab)
 

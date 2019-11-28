@@ -21,7 +21,7 @@ class SimpleTransformer(Model):
     def __init__(self, vocab: Vocabulary):
         super().__init__(vocab)
 
-        self.config = conf['transformer']
+        self.config = conf['transformer_allen']
 
         vocab_size = vocab.get_vocab_size('tokens')
 
