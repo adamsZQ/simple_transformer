@@ -1,0 +1,40 @@
+log:
+  level: DEBUG
+  file_name: main.log
+transformer_allen:
+  data_prefix: /users4/chzhu/development/knu_ci
+  train_data: ./data/de_en/train.tsv
+  valid_data: ./data/de_en/valid.tsv
+  model: /users4/chzhu/data/stylized_response/model
+  num_layers: 1
+  max_length: 48
+  model_dim: 256
+  dropout: 0.2
+  head_num: 4
+  epoch: 20
+  patience: 5
+transformer_torch:
+  # data
+  min_frequency: 2
+  smoothing: 0.1
+  # train and valid
+  batch_size: 3200
+  max_epoch: 100
+  decode_max_length: 60
+  print_steps: 200
+  max_length: 100
+  # model
+  num_layer: 6
+  d_model: 512
+  d_ff: 2048
+  num_head: 8
+  dropout: 0.1
+  # optimizer
+  factor: 1
+  warm_up: 2000
+  lr: 0
+  betas:
+    - 0.9
+    - 0.98
+  eps: 1e-9
+
