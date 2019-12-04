@@ -15,5 +15,6 @@ def train():
     model = TransformerTrainer(training=True)
     model.train()
 
+
 if __name__ == '__main__':
     train()
